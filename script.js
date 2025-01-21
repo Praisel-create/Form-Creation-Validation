@@ -11,8 +11,8 @@ document.addEventListener('DOMContentLoaded', function(){
         emailError.textContent = '';
         passwordError.textContent = '';
 
-        const usernameInput = document.getElementById("username").value.trim();
-        if (usernameInput.value.length < 3) {
+        const username = document.getElementById("username").value.trim();
+        if (username.length < 3) {
             isValid = false;
             usernameError.textContent = "The username must be over 3 letters long.";
             messages.push(usernameError);
@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function(){
             feedbackDiv.style.color = #28a745;
         } else {
             feedbackDiv.innerHTML = messages.join("<br>");
-            feedbackDiv.style.color = #dc3545
+            feedbackDiv.style.color = #dc3545;
         }
     });
 
