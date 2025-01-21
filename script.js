@@ -1,12 +1,11 @@
 document.addEventListener('DOMContentLoaded', function(){
-    const form = document.getElementById(id="registration-form");
-    const feedbackDiv = document.getElementById(id="form-feedback");
+    const form = document.getElementById("registration-form");
+    const feedbackDiv = document.getElementById("form-feedback");
 
     form.addEventListener("submit", function(event){
         event.preventDefault();
         let isValid = true;
-
-        let messages = [];
+        const messages = [];
 
         usernameError.textContent = '';
         emailError.textContent = '';
@@ -31,12 +30,21 @@ document.addEventListener('DOMContentLoaded', function(){
           }
 
         const passwordInput = document.getElementById("password").value.trim();
-        if (passwordInput < 8) {
+        if (passwordInput.length < 8) {
             isValid = false;
             passwordError.textContent = "Your password is too short";
             messages.push(passwordError);
         } else{
             passwordError.textContent = '';
+        }
+
+        feedbackDiv.style.display = "block";
+        if (isValid = true) {
+            feedbackDiv.textContent = "Registration successful!";
+            feedbackDiv.style.color = #28a745;
+        } else {
+            feedbackDiv.innerHTML = messages.join("<br>");
+            feedbackDiv.style.color = #dc3545
         }
     });
 
