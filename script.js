@@ -29,8 +29,8 @@ document.addEventListener('DOMContentLoaded', function(){
             messages.push(emailError);
           }
 
-        const passwordInput = document.getElementById("password").value.trim();
-        if (passwordInput.length < 8) {
+        const password = document.getElementById("password").value.trim();
+        if (password.length < 8) {
             isValid = false;
             passwordError.textContent = "Your password is too short";
             messages.push(passwordError);
