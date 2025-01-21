@@ -9,11 +9,9 @@ async function fetchUserData() {
             throw new Error("Network response was not ok");
         }
         const users = await response.json();
-    } catch (error) {
-        dataContainer.textContent = '';
-        console.error("Failed to load user data.");
-    }
+
         dataContainer.innerHTML = '';
+
         const userList = document.createElement('ul'); //create ul element
         users.array.forEach(user => {
             const listItem = document.createElement('li'); //create li element
@@ -21,9 +19,12 @@ async function fetchUserData() {
             userList.append(listItem);
         });
         dataContainer.append(userList);
+    } catch (error) {
+        dataContainer.innerHTML = '';
+        console.error("Failed to load user data.");
     }
+}
 
 document.addEventListener(DOMContentLoaded, function(){
-    const apiUrl = 'https://jsonplaceholder.typicode.com/users';
-    fetchUserData(apiUrl);
+    fetchUserData();
 });
