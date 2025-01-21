@@ -5,26 +5,34 @@ async function fetchUserData() {
     try {
         const response = await fetch(apiUrl);
 
-        if (!response.ok){
+        if (!response.ok) {
             throw new Error("Network response was not ok");
         }
+
         const users = await response.json();
 
+        // Clear the container before displaying data
         dataContainer.innerHTML = '';
 
-        const userList = document.createElement('ul'); //create ul element
-        users.array.forEach(user => {
-            const listItem = document.createElement('li'); //create li element
-            listItem.textContent = user.name;
-            userList.append(listItem);
+        // Create and populate the user list
+        const userList = document.createElement('<ul>'); // Create a <ul> element
+        users.forEach(user => {
+            const listItem = document.createElement('<li>'); // Create <li> for each user
+            listItem.textContent = user.name; // Set the user's name as text
+            userList.appendChild(listItem); // Append <li> to <ul>
         });
-        dataContainer.append(userList);
+
+        // Append the user list to the container
+        dataContainer.appendChild(userList);
     } catch (error) {
+        // Handle errors by clearing the container and displaying an error message
         dataContainer.innerHTML = '';
-        console.error("Failed to load user data.");
+        dataContainer.textContent = 'Failed to load user data.';
+        console.error("Error:", error.message);
     }
 }
 
-document.addEventListener(DOMContentLoaded, function(){
+// Add an event listener for DOMContentLoaded
+document.addEventListener("DOMContentLoaded", function () {
     fetchUserData();
 });
