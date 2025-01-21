@@ -13,15 +13,15 @@ async function fetchUserData() {
         dataContainer.textContent = '';
         console.error("Failed to load user data.");
     }
-    dataContainer.innerHTML = '';
-    const userList = document.createElement('ul'); //create ul element
-    users.array.forEach(user => {
-        const listItem = document.createElement('li'); //create li element
-        listItem.textContent = user.name;
-        userList.append(listItem);
-    });
-    dataContainer.append(userList);
-}
+        dataContainer.innerHTML = '';
+        const userList = document.createElement('ul'); //create ul element
+        users.array.forEach(user => {
+            const listItem = document.createElement('li'); //create li element
+            listItem.textContent = user.name;
+            userList.append(listItem);
+        });
+        dataContainer.append(userList);
+    }
 
 document.addEventListener(DOMContentLoaded, function(){
     const apiUrl = 'https://jsonplaceholder.typicode.com/users';
